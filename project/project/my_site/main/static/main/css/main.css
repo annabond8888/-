@@ -1,44 +1,420 @@
- body {
-    font-family: Arial, sans-serif;
-    display: flex; justify-content: center;
-    align-items: center; height: 100vh;
-    background-color: #f0f0f0;
+body {
+   font-family: Arial, sans-serif;
+   background-color: #f0f0f0;
+   padding: 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 120%;
  }
 
- .login-form {
-    width: 300px;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: white;
+.login-form {
+   width: 300px;
+   padding: 20px;
+   border-radius: 5px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   background-color: white;
  }
 
- h1 {
-    text-align: center;
-    margin-bottom: 30px;
+h1 {
+   text-align: center;
+   margin-bottom: 30px;
  }
 
- input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    order: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+input[type="text"], input[type="password"] {
+   width: 100%;
+   padding: 12px 20px;
+   margin: 8px 0;
+   display: inline-block;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   box-sizing: border-box;
  }
 
- button {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+button {
+   width: 100%;
+   background-color: #F55571;
+   color: white;
+   padding: 14px 20px;
+   margin: 8px 0;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
 }
 
- button:hover {
-    background-color: #45a049;
- }
+button:hover {
+   background-color: #E55571;
+}
+
+ /* header styles */
+
+#header {
+    z-index: 999;
+    left: 0;
+    top: 0;
+    margin-bottom: 45%;
+    border-radius: 20px;
+    width: 100%;
+    background-color: #ffffff;
+    height: 10%;
+    position: fixed;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+}
+
+#arrow {
+    background-color: rgb(255, 255, 255);
+    width: 10px;
+    height: 10px;
+}
+
+#login:hover {
+    background-color: #e9e9e9;
+}
+
+#login {
+    text-decoration: none;
+    color: #000000;
+    background-color: #FFFFFF;
+    transition: background-color 0.6s;
+    margin-top: 1.5%;
+    height: 50%;
+    width: 15%;
+    justify-content: center;
+    margin-left: 20%;
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+#elem {
+    padding-top: 2%;
+    width: 70%;
+    display: flex;
+    height: 80%;
+    justify-content: space-between;
+    margin-left: 12%;
+    font-family: 'Krona One';
+    font-size: 100%;
+}
+
+#logo {
+    display: flex;
+}
+
+
+#purp {
+    height: 50px;
+    width: 20px;
+    border-radius: 10px;
+    background-color: #9C69E2;
+}
+
+#r {
+    margin-left: 4px;
+    margin-top: 30px;
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+    background-color: #F55571;
+}
+
+#about:hover {
+    color: #9C69E2;
+    text-decoration: none;
+}
+
+#about {
+    margin-top: 2%;
+    text-decoration: none;
+    transition: text-decoration 1s;
+    transition: color 0.4s;
+}
+
+#head {
+    margin-top: 2%;
+    text-decoration: none;
+    color: black;
+}
+
+
+
+/* footer styles */
+
+#cop {
+    margin-top: 1%;
+    color: #0000006b;
+}
+
+#ico {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 10%;
+}
+
+
+#footer {
+    position: fixed;
+    bottom: 0; left:0; right:0;
+    background-color: #FFFFFF;
+    border-radius: 0 0 20px 20px;
+    font-family: 'Krona One';
+    font-size: 70%;
+    text-align: center;
+
+}
+
+/* base styles */
+
+body {
+    background-color: #9C69E2;
+}
+
+#bg {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+#bg2 {
+    border-radius: 20px;
+    width: 80%;
+    height: 90%;
+    background-color: #FFFFFF;
+    border-radius: 20px 20px 0 0;
+}
+
+#linkgs {
+    text-decoration: none;
+    color: #000000;
+}
+
+#contact {
+    margin-top: 0.7%;
+}
+
+#blockf1 {
+    text-align: center;
+    margin-top: 5%;
+    font-size: 115%;
+    font-family: 'Krona One';
+}
+
+#features {
+    background-color: #f5557044;
+    width: 80%;
+    height: 30%;
+    margin-left: 10%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+#f1 {
+    font-size: 200%;
+    text-align: center;
+    color: #333;
+    padding-top: 1.5%;
+    text-decoration: underline;
+    text-decoration-color: #D88191;
+    text-align: center;
+    font-family: 'Krona One';
+}
+
+#bl {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 2%;
+}
+
+#bl1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    position: relative;
+}
+
+#bl1::before {
+    content: "•";
+    color: #D88190;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    position: relative;
+}
+
+#bl2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    position: relative;
+}
+
+#bl2::before {
+    content: "•";
+    color: #D88190;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    position: relative;
+}
+
+
+#f {
+    margin-left: 4%;
+    margin-top: 10%;
+    width: 100%;
+    height: 50%;
+}
+
+#getstart:hover {
+    background-color: #8661b9;
+}
+
+#getstart {
+    margin-top: 2%;
+    width: 50%;
+    height: 20%;
+    border-radius: 50px;
+    padding: 1%;
+    background-color: #9C69E2;
+    transition: background-color 0.4s;
+    text-align: center;
+    color: #000;
+    margin-left: 20%;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.3);
+    font-size: 140%;
+}
+
+
+#info {
+    background-color: #FFFFFF;
+    width: 30%;
+    height: 40%;
+    font-family: 'Krona One';
+}
+
+
+#opendoors {
+    font-size: 120%;
+    margin-left: 20%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+
+#inform {
+    font-size: 120%;
+    margin-left: 25%;
+    margin-top: 5%;
+}
+
+#faq:hover {
+    background-color: #dab6bc;
+}
+
+a {
+    text-decoration: none;
+}
+
+#faq {
+    text-decoration: none;
+    color: #000000;
+    margin-top: 5%;
+    margin-left: 30%;
+    margin-bottom: 10%;
+    font-size: 140%;
+    line-height: 150%;
+    width: 20%;
+    height: 7%;
+    border-radius: 50px;
+    padding: 1%;
+    background-color: #FCD4DB;
+    transition: background-color 0.4s;
+    text-align: center;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+#hcwh {
+    margin-left: 10%;
+    font-weight: 400;
+    font-size: 300%;
+    line-height: 150%;
+}
+
+#helpbl {
+    display: flex;
+    justify-content: center;
+}
+
+#blocks {
+    width: 100%;
+    font-family: 'Krona One';
+    margin-top: 15%;
+}
+
+#linkexp {
+    text-decoration: none;
+    color: #000000;
+}
+
+#expr:hover {
+    background-color: #e6d6bc;
+}
+
+#expr {
+    font-family: 'Krona One';
+    margin-top: 65vh;
+    width: 8vw;
+    height: 4vh;
+    border-radius: 50px;
+    background-color: #FFEED2;
+    transition: background-color 0.4s;
+    text-align: center;
+    padding-top: 0.2%;
+    margin-left: 50%;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.3);
+    font-size: 140%;
+    position: absolute;
+}
+
+
+#logform {
+    margin-top: 13%;
+    margin-left: 17%;
+    position: absolute;
+}
+
+
+#learn {
+    font-family: 'Krona One';
+    font-size: 250%;
+    margin-left: 19%;
+    line-height: 150%;
+}
+
+#sqr {
+    font-family: 'Krona One';
+    font-weight: 400;
+    font-size: 180%;
+    line-height: 150%;
+    background-color: #f5557044;
+    width: 80%;
+    height: 40%;
+    margin-left: 10%;
+    border-radius: 20px;
+    margin-top: 1%;
+}
+
+

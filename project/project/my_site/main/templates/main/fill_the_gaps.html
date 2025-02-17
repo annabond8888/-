@@ -1,0 +1,129 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fill the Gaps</title>
+</head>
+<body>
+    <div id="container">
+        {% for exercise in exercises %}
+            <div class="exercise">
+                <p><strong>{{ exercise.title }}</strong></p>
+                <form method="post" action="{% url 'check_answer' %}">
+                    {% csrf_token %}
+                    {{ exercise.sentence|safe }}
+                    <label for="answer">Заполните пропуск:</label>
+                    <input type="text" id="answer" name="answer" placeholder="Ваш ответ">
+                    <button type="submit">Проверить</button>
+                    <input type="hidden" name="correct_answer" value="{{ exercise.answer }}">
+                </form>
+            </div>
+        {% endfor %}
+        </div>
+<div id="popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); z-index:9999; background:#fff; padding:20px; border:2px solid #000; text-align:center;">
+<h3 id="popup-message"></h3>
+<button onclick="closePopup()">Закрыть</button>
+</div>
+
+<script>
+function showPopup(message) {
+    const popup = document.getElementById("popup");
+    const popupMessage = document.getElementById("popup-message");
+
+    popupMessage.textContent = message;
+
+    popup.style.display = "flex";
+}
+
+function closePopup() {
+    const popup = document.getElementById("popup");
+
+    popup.style.display = "none";
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const forms = document.querySelectorAll('.exercise form');
+
+    forms.forEach(form => {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const userAnswer = form.elements['answer'].value.trim();
+            const correctAnswer = form.elements['correct_answer'].value.trim();
+
+            let message;
+            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                message = "Верно!";
+            } else {
+                message = `Неверно!`;
+            }
+
+            showPopup(message);
+        });
+    });
+});
+</script>
+
+
+
+
+
+
+</body>
+
+<style>
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+
+.exercise {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+
+.exercise p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.exercise input[type="text"] {
+    width: 100%;
+    padding: 10px 15px;
+    margin-right: 16px;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.exercise button {
+    width: 100%;
+    background-color: #F55571;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+
+.exercise input[type="hidden"] {
+    display: none;
+}
+
+.exercise form {
+    display: block;
+}
+</style>
+
+{% endblock %}

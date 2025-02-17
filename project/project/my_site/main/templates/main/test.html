@@ -1,0 +1,94 @@
+{% extends "main/layout.html" %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>English Test</title>
+</head>
+
+<body>
+    <div class="container">
+        {% for question in questions %}
+            <form method="post" action="{% url 'submit_answers' %}" id="question{{ forloop.counter }}">
+                {% csrf_token %}
+                <h2>{{ forloop.counter }}. {{ question.question_text }}</h2>
+                {% for answer in question.answer_set.all %}
+                    <label>
+                        <input type="radio" name="q_{{ question.id }}" value="{{ answer.id }}" required> {{ answer.answer_text }}
+                    </label><br>
+                {% endfor %}
+            </form>
+        {% endfor %}
+        <button onclick="submitTest()">Отправить</button>
+    </div>
+
+    <script>
+        function submitTest() {
+            let forms = document.querySelectorAll('form');
+            for (let i = 0; i < forms.length; i++) {
+                forms[i].submit();
+            }
+        }
+    </script>
+
+
+</body>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #9C69E2;
+}
+
+.container {
+    max-width: 80vw;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow-y: scroll;
+    height: 75vh;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #9C69E2;
+}
+
+label {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+button {
+    padding: 12px 24px;
+    background-color: #F55571;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #E55571;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        max-width: 95vw;
+        padding: 20px;
+        height: 70vh;
+    }
+}
+</style>
+
+{% endblock %}

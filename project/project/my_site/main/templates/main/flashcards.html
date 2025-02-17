@@ -1,0 +1,198 @@
+{% extends "main/layout.html" %}
+
+{% block title %}Flash-cards{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Изучаем английский язык</h1>
+
+    <div id="card-container">
+        <div id="flash-card" class="flip-card">
+            <div class="flip-card-front">
+                <p id="word"></p>
+            </div>
+            <div class="flip-card-back">
+                <p id="translation"></p>
+            </div>
+        </div>
+    </div>
+
+    <button id="flip-btn">Переворот</button>
+    <button id="prev-btn">Назад</button>
+    <button id="next-btn">Вперед</button>
+</div>
+
+<script>
+const words = [
+    { word: 'Cat', translation: 'Кошка' },
+    { word: 'Dog', translation: 'Собака' },
+    { word: 'Tree', translation: 'Дерево' },
+    { word: 'House', translation: 'Дом' },
+    { word: 'Car', translation: 'Машина' },
+    { word: 'Book', translation: 'Книга' },
+    { word: 'Pen', translation: 'Ручка' },
+    { word: 'Table', translation: 'Стол' },
+    { word: 'Chair', translation: 'Стул' },
+    { word: 'Computer', translation: 'Компьютер' },
+    { word: 'Phone', translation: 'Телефон' },
+    { word: 'Apple', translation: 'Яблоко' },
+    { word: 'Orange', translation: 'Апельсин' },
+    { word: 'Banana', translation: 'Банан' },
+    { word: 'Water', translation: 'Вода' },
+    { word: 'Milk', translation: 'Молоко' },
+    { word: 'Bread', translation: 'Хлеб' },
+    { word: 'Egg', translation: 'Яйцо' },
+    { word: 'Fish', translation: 'Рыба' },
+    { word: 'Meat', translation: 'Мясо' },
+    { word: 'Vegetable', translation: 'Овощ' },
+    { word: 'Fruit', translation: 'Фрукт' },
+    { word: 'School', translation: 'Школа' },
+    { word: 'University', translation: 'Университет' },
+    { word: 'Teacher', translation: 'Учитель' },
+    { word: 'Student', translation: 'Студент' },
+    { word: 'Doctor', translation: 'Доктор' },
+    { word: 'Nurse', translation: 'Медсестра' },
+    { word: 'Police', translation: 'Полиция' },
+    { word: 'Firefighter', translation: 'Пожарный' },
+    { word: 'Mountain', translation: 'Гора' },
+    { word: 'River', translation: 'Река' },
+    { word: 'Sea', translation: 'Море' },
+    { word: 'Sky', translation: 'Небо' },
+    { word: 'Sun', translation: 'Солнце' },
+    { word: 'Moon', translation: 'Луна' },
+    { word: 'Star', translation: 'Звезда' },
+    { word: 'Cloud', translation: 'Облако' },
+    { word: 'Rain', translation: 'Дождь' },
+    { word: 'Snow', translation: 'Снег' },
+    { word: 'Wind', translation: 'Ветер' },
+    { word: 'Weather', translation: 'Погода' },
+    { word: 'Season', translation: 'Время года' },
+    { word: 'Summer', translation: 'Лето' },
+    { word: 'Winter', translation: 'Зима' },
+    { word: 'Spring', translation: 'Весна' },
+    { word: 'Autumn', translation: 'Осень' }
+];
+let currentIndex = 0;
+
+document.getElementById('word').textContent = words[currentIndex].word;
+document.getElementById('translation').textContent = words[currentIndex].translation;
+
+document.getElementById('prev-btn').addEventListener('click', () => {
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateCard();
+    }
+});
+
+document.getElementById('next-btn').addEventListener('click', () => {
+    if (currentIndex < words.length - 1) {
+        currentIndex++;
+        updateCard();
+    }
+});
+
+document.getElementById('flip-btn').addEventListener('click', () => {
+    const card = document.getElementById('flash-card');
+    card.classList.toggle('flipped');
+});
+
+function updateCard() {
+    document.getElementById('word').textContent = words[currentIndex].word;
+    document.getElementById('translation').textContent = words[currentIndex].translation;
+}
+</script>
+
+<style>
+.container {
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    padding: 20px;
+}
+
+.container h1 {
+    color: #9C69E2;
+    margin-bottom: 30px;
+}
+
+#card-container {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 200px;
+    perspective: 1000px;
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    line-height: 36px;
+    transition: transform 0.6s;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.flip-card-front {
+    background-color: #fff;
+    color: black;
+}
+
+.flip-card-back {
+    background-color: #66CC99;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.flipped .flip-card-front {
+    transform: rotateY(180deg);
+}
+
+.flipped .flip-card-back {
+    transform: rotateY(360deg);
+}
+
+#word,
+#translation {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: #F55571;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #E55571;
+}
+
+button + button {
+    margin-left: 0px;
+}
+</style>
+
+{% endblock %}
